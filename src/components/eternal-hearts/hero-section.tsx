@@ -25,7 +25,7 @@ const HeroSection = () => {
 
   // --- CONFIG ---
   const firstMeetDate = "2020-02-14"; // YYYY-MM-DD
-  const heartbeatSoundSrc = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAACAAAA2hvb2RseQBUU1NFAAAACgAAAzEwNDEyMDA2AAAAAP/zDEAAAAAAMP////8AAAAAACAAADCoAAAA9AAAAREAAAFgAECBAgECBwYFCw0TFxklKy0yMzU3ODlBQlJERUZISUpMT1JUVVdZW1xdXl9fYGFiY2RlZmdoaWtsbm9wcXJ0dXZ3eHl6e3x9fn+AgYKDhIWEh4aHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfa2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7//P3/AAMFDhIUGBoeIiYqLjg4Oz4+QkZKTlJWXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcZHycjLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wAAAACAAADSAAAAEgQAAQWACQAA/////+f//u8AAAAADWCSCAADwAAACAAACgAAAAgAAAAgADABIAABk4gAAAQ0AAAAAKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq-w==";
+  const heartbeatSoundSrc = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAACAAAA2hvb2RseQBUU1NFAAAACgAAAzEwNDEyMDA2AAAAAP/zDEAAAAAAMP////8AAAAAACAAADCoAAAA9AAAAREAAAFgAECBAgECBwYFCw0TFxklKy0yMzU3ODlBQlJERUZISUpMT1JUVVdZW1xdXl9fYGFiY2RlZmdoaWtsbm9wcXJ0dXZ3eHl6e3x9fn+AgYKDhIWEh4aHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfa2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7//P3/AAMFDhIUGBoeIiYqLjg4Oz4+QkZKTlJWXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcZHycjLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/wAAAACAAADSAAAAEgQAAQWACQAA/////+f//u8AAAAADWCSCAADwAAACAAACgAAAAgAAAAgADABIAABk4gAAAQ0AAAAAKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq-w==";
 
   useEffect(() => {
     // Calculate days since first meet
@@ -138,13 +138,13 @@ const HeroSection = () => {
 
         <div className="relative z-10 flex flex-col items-center justify-center">
             {days > 0 && (
-                 <p className="mb-4 text-foreground/80 opacity-0 animate-fade-in [animation-delay:4s]">
+                 <p className="mb-4 text-foreground/80 opacity-0 animate-fade-in [animation-delay:0.5s]">
                     {days} Days of Loving You ❤️
                 </p>
             )}
 
             <div 
-                className="relative animate-scale-bounce [animation-delay:0.5s] transition-transform duration-500 ease-out"
+                className="relative animate-scale-bounce [animation-delay:1s] transition-transform duration-500 ease-out"
                 style={{ transform: 'rotateX(var(--x-tilt, 0)) rotateY(var(--y-tilt, 0))' }}
             >
                 <Heart 
@@ -155,17 +155,21 @@ const HeroSection = () => {
                 />
             </div>
 
-            <h1 className="font-headline text-7xl md:text-9xl text-primary mt-8 relative overflow-hidden whitespace-nowrap opacity-0 animate-handwriting [animation-delay:1.5s] [animation-fill-mode:forwards] shimmer-text"
+            <h1 className="font-headline text-7xl md:text-9xl text-primary mt-8 relative overflow-hidden whitespace-nowrap opacity-0 animate-handwriting [animation-delay:2s] [animation-fill-mode:forwards] shimmer-text"
                 style={{ filter: 'drop-shadow(0 0 10px hsl(var(--primary) / 0.8))' }}
             >
                 Our Love Story
             </h1>
             
-            <p className="mt-4 text-xl md:text-2xl text-foreground/80 opacity-0 animate-fade-in [animation-delay:3.5s] animate-soft-float">
+            <p className="mt-4 text-xl md:text-2xl text-foreground/80 opacity-0 animate-fade-in [animation-delay:4s] animate-soft-float">
                 Every moment with you is magic ✨
             </p>
+            
+            <p className="mt-6 max-w-xl text-center text-lg text-foreground/70 opacity-0 animate-fade-in [animation-delay:4.3s]">
+                A celebration of the beautiful journey we share, and a testament to a love that grows stronger with each passing day.
+            </p>
 
-            <a href="#timeline" className="mt-12 opacity-0 animate-glow-pop [animation-delay:4s] [animation-fill-mode:forwards]">
+            <a href="#timeline" className="mt-10 opacity-0 animate-glow-pop [animation-delay:4.5s] [animation-fill-mode:forwards]">
                 <Button 
                     size="lg" 
                     className="rounded-full bg-white/10 hover:bg-white/20 text-primary-foreground text-lg backdrop-blur-md border border-white/20 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-primary/40"
