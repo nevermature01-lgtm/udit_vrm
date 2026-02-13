@@ -55,7 +55,7 @@ const ValentineQuestion = () => {
           <h2 className="font-headline text-5xl md:text-7xl text-primary animate-glow">
             You just made me the happiest person alive!
           </h2>
-          <p className="mt-4 text-xl text-foreground/80">I love you! ❤️</p>
+          <p className="mt-4 text-xl text-black">I love you, Nisha! ❤️</p>
         </div>
       </div>
     );
