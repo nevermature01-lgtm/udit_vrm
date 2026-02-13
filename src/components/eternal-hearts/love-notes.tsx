@@ -34,11 +34,6 @@ const initialNotes = [
     content:
       "You're not just my love, you're my partner in crime, my confidant, and my best friend. Life is an amazing adventure with you by my side.",
   },
-  {
-    title: "A Heart's Desire",
-    content:
-      "Kya karu aisa ki tum meri ho jao kaunsi masjid mai karu sajde Or kaun sa mandir mai matha tek aau.... Kaunsi ped sa bandhu dhage kaun sa kue mai naam tera likh phek aau... Or ek roj baje mere darwaje ki ghanti Or tum kitchen sa kaho khali ho to dekh lo.... Ya mai dekh aau.....",
-  },
 ];
 
 const FlipCard = ({
@@ -95,6 +90,17 @@ export default function LoveNotes() {
             }
           />
         ))}
+      </div>
+
+      <div className="mt-12 w-full max-w-2xl mx-auto">
+        <div className="w-full h-full p-8 flex flex-col items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20">
+          <h3 className="text-3xl font-headline text-primary mb-4">A Heart's Desire</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Kya karu aisa ki tum meri ho jao kaunsi masjid mai karu sajde Or kaun sa mandir mai matha tek aau.... <br/>
+            Kaunsi ped sa bandhu dhage kaun sa kue mai naam tera likh phek aau... <br/>
+            Or ek roj baje mere darwaje ki ghanti Or tum kitchen sa kaho khali ho to dekh lo.... Ya mai dekh aau.....
+          </p>
+        </div>
       </div>
     </section>
   );
