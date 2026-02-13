@@ -78,7 +78,7 @@ export default function HeroSection() {
     const image3 = PlaceHolderImages[2];
 
   return (
-    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background py-24 px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-start justify-center overflow-hidden bg-background pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         {/* Background Elements */}
         <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan -z-10" />
         <div className="absolute inset-0 bg-grainy -z-10 opacity-[0.03] dark:opacity-[0.01]"/>
