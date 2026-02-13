@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Heart } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
+import { cn } from "@/lib/utils";
 
 const initialNotes = [
   {
@@ -63,7 +65,27 @@ const FlipCard = ({
   );
 };
 
+const AnimatedCardWrapper = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const [ref, isInView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const delay = (index % 3) * 150;
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "transition-all duration-700 ease-in-out",
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      )}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
 export default function LoveNotes() {
+  const [shayariRef, shayariInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
   return (
     <section id="love-notes" className="w-full max-w-6xl mx-auto py-20 px-4 z-10">
       <h2 className="text-5xl md:text-7xl font-headline text-primary text-center mb-4">
@@ -75,24 +97,30 @@ export default function LoveNotes() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {initialNotes.map((note, index) => (
-          <FlipCard
-            key={index}
-            front={
-              <div className="w-full h-full p-6 flex flex-col items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
-                <Heart className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-2xl font-bold text-primary">{note.title}</h3>
-              </div>
-            }
-            back={
-              <div className="w-full h-full p-6 flex items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
-                <p className="text-foreground/90">{note.content}</p>
-              </div>
-            }
-          />
+          <AnimatedCardWrapper key={index} index={index}>
+            <FlipCard
+              front={
+                <div className="w-full h-full p-6 flex flex-col items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
+                  <Heart className="w-12 h-12 text-primary mb-4" />
+                  <h3 className="text-2xl font-bold text-primary">{note.title}</h3>
+                </div>
+              }
+              back={
+                <div className="w-full h-full p-6 flex items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20 transition-transform duration-300 group-hover:scale-105 cursor-pointer">
+                  <p className="text-foreground/90">{note.content}</p>
+                </div>
+              }
+            />
+          </AnimatedCardWrapper>
         ))}
       </div>
 
-      <div className="mt-12 w-full max-w-2xl mx-auto">
+      <div
+        ref={shayariRef}
+        className={cn("mt-12 w-full max-w-2xl mx-auto transition-all duration-700 ease-in-out",
+          shayariInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        )}
+      >
         <div className="w-full h-full p-8 flex flex-col items-center justify-center text-center rounded-lg shadow-xl bg-white/80 dark:bg-card/80 backdrop-blur-md border border-primary/20">
           <h3 className="text-3xl font-headline text-primary mb-4">A Heart's Desire</h3>
           <p className="text-foreground/90 leading-relaxed">

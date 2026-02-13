@@ -35,7 +35,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased', poppins.variable, greatVibes.variable)}>
+      <body className={cn('font-body antialiased overflow-x-hidden', poppins.variable, greatVibes.variable)}>
         <FloatingHearts />
         {children}
         <Toaster />
