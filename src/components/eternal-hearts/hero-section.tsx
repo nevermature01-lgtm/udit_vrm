@@ -85,7 +85,7 @@ const HeroSection = () => {
       
       <section
         id="home"
-        className="h-screen w-full flex flex-col items-center justify-center text-center p-4 relative z-10 overflow-hidden perspective-1000"
+        className="h-screen w-full flex flex-col items-center justify-center text-center px-6 py-4 relative z-10 perspective-1000"
       >
         {/* Layer 1: Animated Background */}
         <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan" />
@@ -127,8 +127,8 @@ const HeroSection = () => {
                 />
             </div>
 
-            <h1 className="font-headline text-7xl md:text-9xl text-primary mt-4 relative overflow-hidden whitespace-nowrap opacity-0 animate-fade-in-up [animation-delay:0.5s] shimmer-text"
-                style={{ filter: 'drop-shadow(0 0 15px hsl(var(--primary) / 0.8))' }}
+            <h1 className="font-headline text-[clamp(2.5rem,8vw,6rem)] leading-tight max-w-[95%] text-primary mt-4 relative opacity-0 animate-fade-in-up [animation-delay:0.5s] shimmer-text"
+                style={{ textShadow: '0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.4)' }}
             >
                 Our Love Story
             </h1>
@@ -141,7 +141,7 @@ const HeroSection = () => {
             <a href="#timeline" className="opacity-0 animate-glow-pop [animation-delay:2s] [animation-fill-mode:forwards]">
                 <Button 
                     size="lg" 
-                    className="group rounded-full bg-white/10 hover:bg-white/20 text-primary-foreground text-lg backdrop-blur-md border border-white/20 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-primary/40"
+                    className="group rounded-full bg-white/10 hover:bg-white/20 text-primary-foreground text-lg backdrop-blur-[10px] border border-white/20 shadow-[0_10px_30px_rgba(255,77,109,0.25),0_0_40px_rgba(255,77,109,0.15)] transition-all duration-300 hover:scale-105"
                 >
                     Start Our Journey
                 </Button>
