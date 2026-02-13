@@ -11,7 +11,8 @@ const initialNotes = [
   },
   {
     title: "My Favorite Memory",
-    content: "when we meet",
+    content:
+      "The moment our eyes met for the first time. The world seemed to fade away, and in that instant, I knew my life was about to change forever. It was the beginning of our beautiful story.",
   },
   {
     title: "My Promise to You",
