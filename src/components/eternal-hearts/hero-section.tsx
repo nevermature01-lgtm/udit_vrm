@@ -1,155 +1,148 @@
 "use client";
 
-import { Heart } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { Heart, MessageCircle, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
+import { useEffect, useState, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
-// Helper component for particles
-const Sparkle = ({ id, style }: { id: number, style: React.CSSProperties }) => (
-  <div
-    key={id}
-    className="fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full z-50 pointer-events-none animate-cursor-trail"
-    style={style}
-  />
+const StatCard = ({ icon, value, label }: { icon: React.ReactNode, value: string, label: string }) => (
+  <div className="text-center">
+    <div className="flex items-center justify-center gap-2">
+      {icon}
+      <p className="text-3xl md:text-4xl font-bold text-primary">{value}</p>
+    </div>
+    <p className="text-sm text-foreground/70 mt-1">{label}</p>
+  </div>
 );
 
-const HeroSection = () => {
-  const [sparkles, setSparkles] = useState<{ id: number, style: React.CSSProperties }[]>([]);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [glowShift, setGlowShift] = useState(0);
+const FloatingCard = ({ image, className, rotation, title, icon }: { image: ImagePlaceholder, className?: string, rotation: string, title: string, icon: React.ReactNode }) => (
+  <div
+    className={cn(
+      "absolute bg-black/10 backdrop-blur-lg rounded-xl p-2 border border-white/20 shadow-2xl transition-transform duration-300 hover:scale-105",
+      className
+    )}
+    style={{ transform: rotation }}
+  >
+    <div className="relative w-40 h-52 md:w-48 md:h-60">
+      <Image
+        src={image.imageUrl}
+        alt={image.description}
+        fill
+        className="rounded-lg object-cover"
+        data-ai-hint={image.imageHint}
+      />
+      <div className="absolute bottom-2 left-2 right-2 p-2 bg-black/30 backdrop-blur-sm rounded-md text-white text-xs flex items-center gap-1.5">
+        {icon}
+        {title}
+      </div>
+    </div>
+  </div>
+);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      if (window.innerWidth < 768) {
-        if (heroRef.current) {
-          heroRef.current.style.setProperty('--x-tilt', `0deg`);
-          heroRef.current.style.setProperty('--y-tilt', `0deg`);
-        }
-      }
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+export default function HeroSection() {
+    const firstMeetDate = new Date('2021-02-14'); // Example date
+    const [days, setDays] = useState(0);
+    const containerRef = useRef<HTMLElement>(null);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 768 || !heroRef.current) return;
-      
-      requestAnimationFrame(() => {
-        if (!heroRef.current) return;
-        const { clientX, clientY } = e;
-        const { offsetWidth, offsetHeight } = heroRef.current;
-        const xTilt = (clientY / offsetHeight - 0.5) * -15;
-        const yTilt = (clientX / offsetWidth - 0.5) * 15;
+    useEffect(() => {
+        const today = new Date();
+        const differenceInTime = today.getTime() - firstMeetDate.getTime();
+        const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
+        setDays(differenceInDays);
+    }, []);
 
-        heroRef.current.style.setProperty('--x-tilt', `${xTilt}deg`);
-        heroRef.current.style.setProperty('--y-tilt', `${yTilt}deg`);
-      });
-    };
-    
-    const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const newGlowShift = Math.min(scrollY / 10, 50);
-        setGlowShift(newGlowShift);
-    }
-
-    const handleClick = (e: MouseEvent) => {
-      let newSparkles: { id: number; style: React.CSSProperties; }[] = [];
-      for (let i = 0; i < 15; i++) {
-        const id = Date.now() + i;
-        const style = {
-          left: `${e.clientX}px`,
-          top: `${e.clientY}px`,
-          transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(${Math.random()})`,
-          opacity: Math.random(),
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!containerRef.current || window.innerWidth < 1024) return;
+            
+            requestAnimationFrame(() => {
+              if (!containerRef.current) return;
+              const { clientX, clientY } = e;
+              const { offsetWidth, offsetHeight } = containerRef.current;
+              const xPercent = (clientX / offsetWidth - 0.5) * 2;
+              const yPercent = (clientY / offsetHeight - 0.5) * 2;
+              
+              containerRef.current.style.setProperty('--x-mouse', `${xPercent * 10}px`);
+              containerRef.current.style.setProperty('--y-mouse', `${yPercent * 10}px`);
+            });
         };
-        newSparkles.push({ id, style });
-      }
-      setSparkles(prev => [...prev, ...newSparkles]);
-      setTimeout(() => setSparkles([]), 1000);
-    };
+        
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('click', handleClick);
-
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('click', handleClick);
-    };
-  }, []);
+    const image1 = PlaceHolderImages[0];
+    const image2 = PlaceHolderImages[1];
+    const image3 = PlaceHolderImages[2];
 
   return (
-    <>
-      {sparkles.map(s => <Sparkle key={s.id} id={s.id} style={s.style} />)}
-      
-      <section
-        id="home"
-        className="min-h-screen w-full flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 relative z-10 perspective-1000 overflow-visible"
-      >
-        {/* Layer 1: Animated Background */}
-        <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan" />
-        <div className="absolute inset-0 bg-black/20 dark:bg-black/50" />
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl animate-subtle-glow transition-transform duration-500" 
-          style={{ transform: `translateY(${glowShift}px)` }}
-        />
-        <div className="absolute inset-0 aurora-container">
-            <div className="aurora-blob one"></div>
-            <div className="aurora-blob two"></div>
-            <div className="aurora-blob three"></div>
-        </div>
-        <div className="absolute inset-0 vignette pointer-events-none" />
+    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background py-24 px-4 sm:px-6 lg:px-8">
+        {/* Background Elements */}
+        <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan -z-10" />
+        <div className="absolute inset-0 bg-grainy -z-10 opacity-[0.03] dark:opacity-[0.01]"/>
+        <div className="absolute -left-1/4 -top-1/4 w-full h-full bg-primary/5 rounded-full blur-3xl animate-aurora-one -z-10" />
+        <div className="absolute -right-1/4 -bottom-1/4 w-full h-full bg-accent/5 rounded-full blur-3xl animate-aurora-two -z-10" />
 
-        {/* Layer 2: Decorative Elements */}
-        <Heart className="absolute -top-10 -left-20 w-80 h-80 text-primary/5 opacity-50 -rotate-12 pointer-events-none" fill="currentColor" />
-        <Heart className="absolute -bottom-20 -right-20 w-96 h-96 text-primary/5 opacity-50 rotate-12 pointer-events-none" fill="currentColor" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[500px] md:h-[500px] border-2 border-primary/10 rounded-full animate-slow-spin pointer-events-none" />
-        {[...Array(10)].map((_, i) => (
-            <div key={i} className="absolute top-1/2 left-1/2 w-1 h-1 bg-white rounded-full animate-sparkle pointer-events-none" style={{animationDelay: `${i * 0.3}s`}}/>
-        ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto z-10">
+            {/* Left Column */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <p className="text-sm uppercase tracking-widest text-primary/80 font-semibold opacity-0 animate-fade-in [animation-delay:200ms]">
+                    Because you changed my world 💫
+                </p>
+                <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground opacity-0 animate-fade-in-up [animation-delay:400ms]">
+                    Falling for you was the <span className="text-primary">best thing</span> that ever happened to me.
+                </h1>
+                <p className="mt-6 text-lg text-foreground/70 max-w-lg opacity-0 animate-fade-in-up [animation-delay:600ms]">
+                    Every day is an adventure, every moment a treasure. Our story is my favorite.
+                </p>
 
-        {/* Layer 3: Main Content */}
-        <div 
-          ref={heroRef}
-          className="relative z-10 flex flex-col items-center justify-center transform-style-3d transition-transform duration-300 ease-out"
-          style={{ transform: 'rotateX(var(--x-tilt, 0)) rotateY(var(--y-tilt, 0))' }}
-        >
-            <p className="tracking-widest text-sm text-foreground/70 mb-6 opacity-0 animate-fade-in [animation-delay:1.5s] relative">
-                For the one who changed my world
-            </p>
-
-            <div className="relative animate-float-up-down opacity-0 animate-scale-bounce [animation-delay:0.2s]">
-                <Heart 
-                    className="w-40 h-40 md:w-48 md:h-48 text-primary animate-heart-pulse"
-                    fill="currentColor"
-                    style={{ filter: 'drop-shadow(0 0 40px hsl(var(--primary) / 0.8))' }} 
-                />
+                <a href="#timeline" className="mt-8 opacity-0 animate-fade-in-up [animation-delay:800ms]">
+                    <Button size="lg" className="rounded-full px-8 py-6 text-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 hover:scale-105">
+                        Start Our Love Journey
+                    </Button>
+                </a>
+                
+                <div className="mt-12 w-full border-t border-border pt-8 opacity-0 animate-fade-in-up [animation-delay:1000ms]">
+                    <div className="grid grid-cols-3 gap-4">
+                        <StatCard icon={<Heart className="text-primary/70"/>} value={days.toLocaleString()} label="Days Loving You"/>
+                        <StatCard icon={<MessageCircle className="text-primary/70"/>} value="10k+" label="Messages Sent"/>
+                        <StatCard icon={<MapPin className="text-primary/70"/>} value="5" label="Cities Visited"/>
+                    </div>
+                </div>
             </div>
 
-            <h1 className="font-headline text-[clamp(3rem,8vw,7rem)] leading-tight text-primary mt-4 relative opacity-0 animate-fade-in-up [animation-delay:0.5s] shimmer-text w-full"
-                style={{ textShadow: '0 0 12px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4)' }}
-            >
-                Our Love Story
-            </h1>
-            
-            <div className="relative w-32 h-px bg-primary/30 my-6 opacity-0 animate-fade-in [animation-delay:1s]">
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full" style={{boxShadow: '0 0 10px hsl(var(--primary))'}}/>
-              <Heart className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 text-primary" fill="currentColor"/>
-            </div>
-
-            <a href="#timeline" className="opacity-0 animate-glow-pop [animation-delay:2s] [animation-fill-mode:forwards]">
-                <Button 
-                    size="lg" 
-                    className="group rounded-full bg-white/10 hover:bg-white/20 text-primary-foreground text-lg backdrop-blur-[10px] border border-white/20 shadow-[0_0_20px_hsl(var(--primary)/0.35),0_10px_40px_hsl(var(--primary)/0.25)] transition-all duration-300 hover:scale-105"
+            {/* Right Column */}
+            <div className="relative h-[450px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in [animation-delay:200ms] order-first lg:order-last">
+                <div 
+                    className="absolute transition-transform duration-500 ease-out" 
+                    style={{transform: 'translate(var(--x-mouse, 0px), var(--y-mouse, 0px))'}}
                 >
-                    Start Our Journey
-                </Button>
-            </a>
+                    <FloatingCard 
+                        image={image1} 
+                        rotation="rotate(-8deg) translate(20px, -40px)"
+                        title="First Meet 💕"
+                        icon={<Heart className="w-3 h-3"/>}
+                        className="opacity-0 animate-float-item [animation-delay:800ms]"
+                    />
+                    <FloatingCard 
+                        image={image2} 
+                        rotation="rotate(5deg) translate(-20px, 0px) scale(1.1)"
+                        title="Proposal Day 💍"
+                        icon={<Heart className="w-3 h-3"/>}
+                        className="z-10 opacity-0 animate-float-item [animation-delay:600ms]"
+                    />
+                    <FloatingCard 
+                        image={image3} 
+                        rotation="rotate(12deg) translate(60px, 50px)"
+                        title="Still Mine ❤️"
+                        icon={<Heart className="w-3 h-3"/>}
+                        className="opacity-0 animate-float-item [animation-delay:1000ms]"
+                    />
+                </div>
+            </div>
         </div>
-      </section>
-    </>
+    </section>
   );
-};
-
-export default HeroSection;
+}
