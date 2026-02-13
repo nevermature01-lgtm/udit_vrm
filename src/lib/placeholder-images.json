@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "memory1",
+      "description": "Our first coffee date, where it all began.",
+      "imageUrl": "https://images.unsplash.com/photo-1579294087307-657ee969cba2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb3VwbGUlMjBjb2ZmZWV8ZW58MHx8fHwxNzcwODY4NTcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple coffee"
+    },
+    {
+      "id": "memory2",
+      "description": "Watching the sunset together.",
+      "imageUrl": "https://images.unsplash.com/photo-1591969851586-adbbd4accf81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y291cGxlJTIwc3Vuc2V0fGVufDB8fHx8MTc3MDg3NDM0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple sunset"
+    },
+    {
+      "id": "memory3",
+      "description": "That silly face you make.",
+      "imageUrl": "https://images.unsplash.com/photo-1745434123170-54fec6b078aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzaWxseSUyMGNvdXBsZXxlbnwwfHx8fDE3NzA5NTk5MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "silly couple"
+    },
+    {
+      "id": "memory4",
+      "description": "Our adventure in the mountains.",
+      "imageUrl": "https://images.unsplash.com/photo-1529537333698-b2051a6e74bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjb3VwbGUlMjBoaWtpbmd8ZW58MHx8fHwxNzcwODg5MTAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple hiking"
+    },
+    {
+      "id": "memory5",
+      "description": "Cooking together and making a mess.",
+      "imageUrl": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb3VwbGUlMjBjb29raW5nfGVufDB8fHx8MTc3MDk1MjkyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple cooking"
+    },
+    {
+      "id": "memory6",
+      "description": "Just another perfect, lazy Sunday.",
+      "imageUrl": "https://images.unsplash.com/photo-1758973137415-19581a049598?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb3VwbGUlMjByZWxheGluZ3xlbnwwfHx8fDE3NzA5NTk5MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple relaxing"
+    }
+  ]
 }
