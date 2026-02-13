@@ -1,21 +1,11 @@
 "use client";
 
 import Image from 'next/image';
-import { Heart, MessageCircle, MapPin } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-
-const StatCard = ({ icon, value, label }: { icon: React.ReactNode, value: string, label: string }) => (
-  <div className="text-center">
-    <div className="flex items-center justify-center gap-2">
-      {icon}
-      <p className="text-3xl md:text-4xl font-bold text-primary">{value}</p>
-    </div>
-    <p className="text-sm text-foreground/70 mt-1">{label}</p>
-  </div>
-);
 
 const FloatingCard = ({ image, className, rotation, title, icon }: { image: ImagePlaceholder, className?: string, rotation: string, title: string, icon: React.ReactNode }) => (
   <div
@@ -42,16 +32,7 @@ const FloatingCard = ({ image, className, rotation, title, icon }: { image: Imag
 );
 
 export default function HeroSection() {
-    const firstMeetDate = new Date('2021-02-14'); // Example date
-    const [days, setDays] = useState(0);
     const containerRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const today = new Date();
-        const differenceInTime = today.getTime() - firstMeetDate.getTime();
-        const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
-        setDays(differenceInDays);
-    }, []);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -78,14 +59,14 @@ export default function HeroSection() {
     const image3 = PlaceHolderImages[2];
 
   return (
-    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center bg-background pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-visible">
+    <section ref={containerRef} id="home" className="relative flex items-center justify-center w-full min-h-screen px-4 py-16 sm:px-6 lg:px-8 overflow-visible pt-24 pb-16">
         {/* Background Elements */}
         <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan -z-10" />
         <div className="absolute inset-0 bg-grainy -z-10 opacity-[0.03] dark:opacity-[0.01]"/>
         <div className="absolute -left-1/4 -top-1/4 w-full h-full bg-primary/5 rounded-full blur-3xl animate-aurora-one -z-10" />
         <div className="absolute -right-1/4 -bottom-1/4 w-full h-full bg-accent/5 rounded-full blur-3xl animate-aurora-two -z-10" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto z-10 w-full">
             {/* Left Column */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                 <p className="text-sm uppercase tracking-widest text-primary/80 font-semibold opacity-0 animate-fade-in [animation-delay:200ms]">
@@ -103,20 +84,12 @@ export default function HeroSection() {
                         Start Our Love Journey
                     </Button>
                 </a>
-                
-                <div className="mt-12 w-full border-t border-border pt-8 opacity-0 animate-fade-in-up [animation-delay:1000ms]">
-                    <div className="grid grid-cols-3 gap-4">
-                        <StatCard icon={<Heart className="text-primary/70"/>} value={days.toLocaleString()} label="Days Loving You"/>
-                        <StatCard icon={<MessageCircle className="text-primary/70"/>} value="10k+" label="Messages Sent"/>
-                        <StatCard icon={<MapPin className="text-primary/70"/>} value="5" label="Cities Visited"/>
-                    </div>
-                </div>
             </div>
 
             {/* Right Column */}
             <div className="relative w-full flex items-center justify-center animate-fade-in [animation-delay:200ms] order-first lg:order-last mb-8 lg:mb-0">
-                <div 
-                    className="relative w-full h-[500px] max-w-sm transition-transform duration-500 ease-out" 
+                 <div 
+                    className="relative w-full h-[400px] max-w-sm transition-transform duration-500 ease-out lg:h-[500px]" 
                     style={{transform: 'translate(var(--x-mouse, 0px), var(--y-mouse, 0px))'}}
                 >
                     <FloatingCard 
@@ -124,21 +97,21 @@ export default function HeroSection() {
                         rotation="rotate(-8deg)"
                         title="First Meet 💕"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="opacity-0 animate-float-item [animation-delay:800ms] top-[40px] left-[40px]"
+                        className="opacity-0 animate-float-item [animation-delay:800ms] top-[20px] left-[20px] lg:top-[40px] lg:left-[40px]"
                     />
                     <FloatingCard 
                         image={image2} 
                         rotation="rotate(5deg) scale(1.1)"
                         title="Proposal Day 💍"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="z-10 opacity-0 animate-float-item [animation-delay:600ms] top-[120px] left-[90px]"
+                        className="z-10 opacity-0 animate-float-item [animation-delay:600ms] top-[80px] left-[70px] lg:top-[120px] lg:left-[90px]"
                     />
                     <FloatingCard 
                         image={image3} 
                         rotation="rotate(12deg)"
                         title="Still Mine ❤️"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="opacity-0 animate-float-item [animation-delay:1000ms] top-[200px] left-[140px]"
+                        className="opacity-0 animate-float-item [animation-delay:1000ms] top-[140px] left-[120px] lg:top-[200px] lg:left-[140px]"
                     />
                 </div>
             </div>
