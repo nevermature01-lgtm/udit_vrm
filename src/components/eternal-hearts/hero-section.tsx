@@ -78,7 +78,7 @@ export default function HeroSection() {
     const image3 = PlaceHolderImages[2];
 
   return (
-    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-start justify-center overflow-hidden bg-background pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background pt-20 pb-20 px-4 sm:px-6 lg:px-8">
         {/* Background Elements */}
         <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan -z-10" />
         <div className="absolute inset-0 bg-grainy -z-10 opacity-[0.03] dark:opacity-[0.01]"/>
@@ -121,21 +121,21 @@ export default function HeroSection() {
                 >
                     <FloatingCard 
                         image={image1} 
-                        rotation="rotate(-8deg) translate(20px, -40px)"
+                        rotation="rotate(-8deg) translate(20px, -80px)"
                         title="First Meet 💕"
                         icon={<Heart className="w-3 h-3"/>}
                         className="opacity-0 animate-float-item [animation-delay:800ms]"
                     />
                     <FloatingCard 
                         image={image2} 
-                        rotation="rotate(5deg) translate(-20px, 0px) scale(1.1)"
+                        rotation="rotate(5deg) translate(-20px, -40px) scale(1.1)"
                         title="Proposal Day 💍"
                         icon={<Heart className="w-3 h-3"/>}
                         className="z-10 opacity-0 animate-float-item [animation-delay:600ms]"
                     />
                     <FloatingCard 
                         image={image3} 
-                        rotation="rotate(12deg) translate(60px, 50px)"
+                        rotation="rotate(12deg) translate(60px, 10px)"
                         title="Still Mine ❤️"
                         icon={<Heart className="w-3 h-3"/>}
                         className="opacity-0 animate-float-item [animation-delay:1000ms]"
