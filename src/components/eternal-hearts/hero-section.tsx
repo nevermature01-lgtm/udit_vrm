@@ -78,7 +78,7 @@ export default function HeroSection() {
     const image3 = PlaceHolderImages[2];
 
   return (
-    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background pt-20 pb-20 px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} id="home" className="relative min-h-screen w-full flex items-center justify-center bg-background pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-visible">
         {/* Background Elements */}
         <div className="absolute inset-0 w-full h-full animated-gradient animate-background-pan -z-10" />
         <div className="absolute inset-0 bg-grainy -z-10 opacity-[0.03] dark:opacity-[0.01]"/>
@@ -114,31 +114,31 @@ export default function HeroSection() {
             </div>
 
             {/* Right Column */}
-            <div className="relative h-[450px] lg:h-[600px] w-full flex items-center justify-center animate-fade-in [animation-delay:200ms] order-first lg:order-last">
+            <div className="relative w-full flex items-center justify-center animate-fade-in [animation-delay:200ms] order-first lg:order-last mb-8 lg:mb-0">
                 <div 
-                    className="absolute transition-transform duration-500 ease-out" 
+                    className="relative w-full h-[500px] max-w-sm transition-transform duration-500 ease-out" 
                     style={{transform: 'translate(var(--x-mouse, 0px), var(--y-mouse, 0px))'}}
                 >
                     <FloatingCard 
                         image={image1} 
-                        rotation="rotate(-8deg) translate(20px, -80px)"
+                        rotation="rotate(-8deg)"
                         title="First Meet 💕"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="opacity-0 animate-float-item [animation-delay:800ms]"
+                        className="opacity-0 animate-float-item [animation-delay:800ms] top-[40px] left-[40px]"
                     />
                     <FloatingCard 
                         image={image2} 
-                        rotation="rotate(5deg) translate(-20px, -40px) scale(1.1)"
+                        rotation="rotate(5deg) scale(1.1)"
                         title="Proposal Day 💍"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="z-10 opacity-0 animate-float-item [animation-delay:600ms]"
+                        className="z-10 opacity-0 animate-float-item [animation-delay:600ms] top-[120px] left-[90px]"
                     />
                     <FloatingCard 
                         image={image3} 
-                        rotation="rotate(12deg) translate(60px, 10px)"
+                        rotation="rotate(12deg)"
                         title="Still Mine ❤️"
                         icon={<Heart className="w-3 h-3"/>}
-                        className="opacity-0 animate-float-item [animation-delay:1000ms]"
+                        className="opacity-0 animate-float-item [animation-delay:1000ms] top-[200px] left-[140px]"
                     />
                 </div>
             </div>
