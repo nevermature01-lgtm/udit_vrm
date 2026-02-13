@@ -34,6 +34,11 @@ const initialNotes = [
     content:
       "You're not just my love, you're my partner in crime, my confidant, and my best friend. Life is an amazing adventure with you by my side.",
   },
+  {
+    title: "A Heart's Desire",
+    content:
+      "Kya karu aisa ki tum meri ho jao kaunsi masjid mai karu sajde Or kaun sa mandir mai matha tek aau.... Kaunsi ped sa bandhu dhage kaun sa kue mai naam tera likh phek aau... Or ek roj baje mere darwaje ki ghanti Or tum kitchen sa kaho khali ho to dekh lo.... Ya mai dekh aau.....",
+  },
 ];
 
 const FlipCard = ({
