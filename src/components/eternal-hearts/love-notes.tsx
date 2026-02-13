@@ -11,8 +11,7 @@ const initialNotes = [
   },
   {
     title: "My Favorite Memory",
-    content:
-      "That time we danced in the rain without a care in the world. It was the moment I knew I was completely and utterly in love with you.",
+    content: "when we meet",
   },
   {
     title: "My Promise to You",
