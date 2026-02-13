@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Music, MusicOff } from "lucide-react";
+import { Music, VolumeX } from "lucide-react";
 
 export default function MusicToggle() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -49,7 +49,7 @@ export default function MusicToggle() {
         {isPlaying ? (
           <Music className="h-5 w-5 text-primary" />
         ) : (
-          <MusicOff className="h-5 w-5 text-primary/70" />
+          <VolumeX className="h-5 w-5 text-primary/70" />
         )}
         <span className="sr-only">Toggle Music</span>
       </Button>

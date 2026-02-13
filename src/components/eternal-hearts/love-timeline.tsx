@@ -2,7 +2,7 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { Heart, Plane, Ring, Smartphone, Speech, ThumbsUp } from "lucide-react";
+import { Gem, Heart, Plane, Smartphone, Speech, ThumbsUp } from "lucide-react";
 import React from "react";
 
 const timelineEvents = [
@@ -35,7 +35,7 @@ const timelineEvents = [
     side: "right",
   },
   {
-    icon: <Ring />,
+    icon: <Gem />,
     date: "A Day to Remember",
     title: "Proposal Day",
     description: "The beginning of our forever. A 'yes' that changed our lives.",
