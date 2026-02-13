@@ -2,58 +2,55 @@
 
 import { useInView } from "@/hooks/use-in-view";
 import { cn } from "@/lib/utils";
-import { Gem, Heart, Plane, Smartphone, Speech, ThumbsUp } from "lucide-react";
+import { Gem, Heart, Plane, Smartphone, ThumbsUp } from "lucide-react";
 import React from "react";
 
 const timelineEvents = [
   {
-    icon: <Heart />,
-    date: "A Magical Day",
-    title: "First Meet",
-    description: "Our eyes met, and in that single moment, a new story began.",
+    icon: <Gem />,
+    date: "January 25, 2024",
+    title: "Proposal Day",
+    description:
+      "The beginning of our forever. A 'yes' that changed our lives during our first long chat.",
     side: "left",
-  },
-  {
-    icon: <Speech />,
-    date: "A Few Days Later",
-    title: "First Chat",
-    description: "Hours felt like minutes as we talked about everything and nothing.",
-    side: "right",
   },
   {
     icon: <Smartphone />,
-    date: "That Unforgettable Night",
+    date: "January 26, 2024",
     title: "First Call",
-    description: "Hearing your voice for the first time was music to my ears.",
-    side: "left",
+    description: "Hearing your voice the next day was music to my ears.",
+    side: "right",
   },
   {
     icon: <ThumbsUp />,
-    date: "A Silly Argument",
+    date: "February 15, 2024",
     title: "First Fight",
-    description: "We survived it! And it only made us stronger and closer.",
-    side: "right",
-  },
-  {
-    icon: <Gem />,
-    date: "A Day to Remember",
-    title: "Proposal Day",
-    description: "The beginning of our forever. A 'yes' that changed our lives.",
+    description: "A silly argument at night that only made us stronger.",
     side: "left",
   },
   {
-    icon: <Plane />,
-    date: "Our First Adventure",
-    title: "First Trip Together",
-    description: "Exploring new places, hand in hand, making memories for a lifetime.",
+    icon: <Heart />,
+    date: "February 19, 2024",
+    title: "First Meet",
+    description:
+      "Our eyes met, and in that single moment, our online story became real.",
     side: "right",
+  },
+  {
+    icon: <Plane />,
+    date: "June 14, 2024",
+    title: "First Trip Together",
+    description:
+      "Exploring new places, hand in hand, making memories for a lifetime.",
+    side: "left",
   },
   {
     icon: <Heart />,
     date: "Today & Always",
     title: "Still Falling For You",
-    description: "Every single day, I find a new reason to fall in love with you all over again.",
-    side: "left",
+    description:
+      "Every single day, I find a new reason to fall in love with you all over again.",
+    side: "right",
   },
 ];
 
