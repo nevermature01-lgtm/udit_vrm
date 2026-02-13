@@ -4,7 +4,6 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import FloatingHearts from '@/components/eternal-hearts/floating-hearts';
-import MusicToggle from '@/components/eternal-hearts/music-toggle';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -38,7 +37,6 @@ export default function RootLayout({
       </head>
       <body className={cn('font-body antialiased', poppins.variable, greatVibes.variable)}>
         <FloatingHearts />
-        <MusicToggle />
         {children}
         <Toaster />
       </body>
