@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
 
@@ -9,6 +9,31 @@ const ValentineQuestion = () => {
   const [noPosition, setNoPosition] = useState({ top: '50%', right: ' calc(50% - 8rem)' });
   const [noCount, setNoCount] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [hearts, setHearts] = useState<{ id: number; style: React.CSSProperties }[]>([]);
+
+  useEffect(() => {
+    if (yesClicked) {
+      const newHearts = Array.from({ length: 30 }).map((_, i) => {
+        const size = Math.random() * 40 + 20;
+        const duration = Math.random() * 8 + 5; // Slower, more majestic
+        const delay = Math.random() * 10;
+        const left = Math.random() * 100;
+
+        return {
+          id: i,
+          style: {
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${left}vw`,
+            animationDuration: `${duration}s`,
+            animationDelay: `${delay}s`,
+          },
+        };
+      });
+      setHearts(newHearts);
+    }
+  }, [yesClicked]);
+
 
   const handleYesClick = () => {
     setYesClicked(true);
@@ -37,21 +62,15 @@ const ValentineQuestion = () => {
   if (yesClicked) {
     return (
       <div className="fixed inset-0 bg-gradient-to-br from-pink-200 to-rose-200 z-50 flex flex-col items-center justify-center text-center p-4 overflow-hidden">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {hearts.map((heart) => (
           <Heart
-            key={i}
-            className="absolute text-primary animate-explode"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 0.5}s`,
-              width: `${Math.random() * 40 + 20}px`,
-              height: `${Math.random() * 40 + 20}px`,
-            }}
+            key={heart.id}
+            className="absolute bottom-[-50px] text-primary animate-float-heart"
+            style={heart.style}
             fill="currentColor"
           />
         ))}
-        <div className="animate-fade-in-up [animation-delay:0.5s]">
+        <div className="animate-fade-in-up [animation-delay:0.5s] z-10">
           <h2 className="font-headline text-5xl md:text-7xl text-primary animate-glow">
             You just made me the happiest person alive!
           </h2>
