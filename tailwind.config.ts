@@ -126,6 +126,31 @@ export default {
           '0%, 100%': { textShadow: '0 0 10px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3)' },
           '50%': { textShadow: '0 0 20px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--primary) / 0.5)' },
         },
+        'float-heart': {
+          '0%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'translateY(-100vh)',
+            opacity: '0',
+          },
+        },
+        'heartbeat': {
+          '0%': { transform: 'scale(1)' },
+          '15%': { transform: 'scale(1.05)' },
+          '30%': { transform: 'scale(1)' },
+          '45%': { transform: 'scale(1.05)' },
+          '60%': { transform: 'scale(1)' },
+        },
+        'typewriter': {
+          from: { width: '0' },
+          to: { width: '100%' },
+        },
+        'explode': {
+          '0%': { transform: 'scale(0)', opacity: '1' },
+          '100%': { transform: 'scale(2.5)', opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -138,6 +163,10 @@ export default {
         'aurora-two': 'aurora-two 25s infinite alternate ease-in-out',
         'grainy': 'grainy 8s steps(10, end) infinite',
         'glow': 'glow 3s ease-in-out infinite',
+        'float-heart': 'float-heart linear infinite',
+        'heartbeat': 'heartbeat 2s ease-in-out infinite',
+        'typewriter': 'typewriter 2s steps(30, end) forwards',
+        'explode': 'explode 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards',
       },
     },
   },

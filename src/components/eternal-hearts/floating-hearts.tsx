@@ -24,7 +24,6 @@ const FloatingHearts = () => {
             left: `${left}vw`,
             animationDuration: `${duration}s`,
             animationDelay: `${delay}s`,
-            animationName: `float-heart`,
           },
         };
       });
@@ -39,7 +38,7 @@ const FloatingHearts = () => {
       {hearts.map((heart) => (
         <Heart
           key={heart.id}
-          className="absolute bottom-[-50px] text-primary/20 animate-[float-heart]"
+          className="absolute bottom-[-50px] text-primary/20 animate-float-heart"
           style={heart.style}
           fill="currentColor"
         />
