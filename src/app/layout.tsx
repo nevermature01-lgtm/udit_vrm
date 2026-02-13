@@ -18,7 +18,7 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: 'Eternal Hearts',
+  title: 'Udit & Nisha',
   description: 'A super cute, romantic, animated Valentine’s Day web app.',
 };
 
